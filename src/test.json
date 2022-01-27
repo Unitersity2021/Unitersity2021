@@ -1,0 +1,14 @@
+
+{
+
+    "phoneNumber": "5555555555",
+    "address": "123 Main St",
+    "city": "New York",
+    "state": "NY",
+    "zip": "10001",
+    "testResult": "positive",
+    "testDate": "2020-01-01",
+    "testType": "pcr",
+    "vaccine": "covid-19"
+
+    }

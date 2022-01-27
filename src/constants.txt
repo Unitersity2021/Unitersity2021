@@ -1,0 +1,63 @@
+//TABLE 1: HEALTH RISKS SCORE MULTIPLIER
+//Health Risks Label Risk Score Multiplier Comments
+const hr_tested_positive_TP = 10 //Tested + with symptoms in high risk
+const hr_high_high_HH = 9 //Tested + with symptoms not in high risk
+const hr_high_medium_HM = 8 //Tested + with other health conditions
+const hr_high_low_HL = 7 //Tested + with no symptoms
+const hr_medium_high_MH = 6 //Not Tested with symptoms in high risk
+const hr_medium_medium_MM = 5 //Not Tested with symptoms not in high risk
+const hr_medium_low_ML = 4 //Not Tested with no symptoms
+const hr_low_high_LH = 3 //Tested - with symptoms in high risk
+const hr_low_medium_LM = 2 //Tested - with symptoms not in high risk
+
+//TABLE 2: ENVIRONMENTAL/SPACE RISKS SCORE MULTIPLIER
+//Environmental/Space Risks Label      Risk Score Multiplier Comments
+const er_not_ventilated_space_crowded_NVC = 10    //Open stadium
+const er_not_ventilated_space_notcrowded_NVNC = 9 //Mechanic Garage
+const er_not_ventilated_space_public_NVP = 8    //Bus stop
+const er_not_ventilated_space_private_NVPP = 7    //Home garage
+const er_ventilated_space_Crowded_VSC = 6 //Shopping mall, Gym.
+const er_ventilated_space_not Crowded_VSNC = 5 //Conference room
+const er_ventilated_space_public_VSP = 4 //Classroom
+const er_ventilated_space_private_VSPP = 3 //Home
+const er_nature_crowded_NC = 2 //Park
+const er_nature_not_crowded_NNC = 1 //Beach
+const er_nature_personal_space_NPS = 0 //Forest
+
+//TABLE 3: PERSONAL/BEHAVIORAL RISKS SCORE MULTIPLIER
+//Personal/Behavioral Risks Label Risk Score Multiplier
+const pbr_not_in_isolation_wearing_recommended_ppe_NIWP = 5
+const pbr_not_in_isolation_not_wearing_recommended_ppe_NINWP = 10
+const pbr_in_isolation_wearing_recommended_ppe_IIWP = 1
+const pbr_in_isolation_not_wearing_recommended_ppe_IINWP = 1
+
+//TABLE 4: TRANSPORTATION SAFETY RISKS SCORE MULTIPLIER
+//Transportation Safety Risks Label Risk Score Multiplier
+const tsr_private_bike_PBB = 1
+const tsr_private_airplaneShip_PBAS = 1
+const tsr_private_busTrain_PBBT = 1
+const tsr_public_bike_PVB = 5
+const tsr_public_airplaneShip_PVAS = 5
+const tsr_public_busTrain_PVBT = 10
+
+//TABLE 5: VACCINE FACTOR RISKS SCORE MULTIPLIER
+//Vaccine Factor Label Risk Score Multiplier
+const vsf_vaccinated_V = 1
+const vsf_not_vaccinated_NV = 10
+
+//TABLE 6: COVID-19 STATUS RISKS SCORE MULTIPLIER
+//Covid-19 Status Notification Factor Label Risk Score Multiplier Comments
+const csf_not_confirmed_not_confirmed_NCNC = 1 //No notification
+const csf_confirmed_not_confirmed_CNC = 10 //Notified to avoid the space as they are within 25ft of an infected individual
+const csf_confirmed_confirmed_CC = 5 //Both notified to avoid the space
+
+//ORDSF =(HR ×ER)×PBS ×TSR ×VF×SF
+//ORDSF =(HR ×ER)×PBS ×TSR ×VSF×CSF
+//With the following acronyms definition:
+//HF: Health Risks
+//ER: Environmental Risks
+//PBR: Personal Behavioral Risks
+//TSR: Transportation Safety Risks
+//VF: Vaccine Factor ==> Changing Vaccine Factor VF to Vaccine Status Factor VSF
+//CSF: COVID-19 Status Factor ==> SF to CSF
+//ORDSF: Overall Risk Density Safety Factor
