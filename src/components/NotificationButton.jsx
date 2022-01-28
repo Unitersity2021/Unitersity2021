@@ -6,6 +6,7 @@ const useStyles = makeStyles((theme) => ({
     mainContainer: {
         height: 50,
         color: theme.palette.warning.dark,
+        backgroundColor: "red",
         textAlign: 'left',
         display: 'flex',
         flexDirection: 'column',
@@ -13,6 +14,11 @@ const useStyles = makeStyles((theme) => ({
 
     },
     
+    btn:{
+        backgroundColor: "red",
+
+    }
+
 }));
 
 export default function NotificationButton(){
@@ -22,7 +28,7 @@ export default function NotificationButton(){
     return (
         <Grid container className={classes.mainContainer} lg={12} md={12} sm={12} xs={12}>
           
-            <Button variant="contained">Notification</Button>
+            <Button className={classes.mainContainer} variant="contained">Notification</Button>
 
         </Grid>
     );

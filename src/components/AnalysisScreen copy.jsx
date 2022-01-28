@@ -3,30 +3,20 @@ import { Grid, Typography, makeStyles, Button, Card, Tooltip, Icon } from
 import axios from 'axios';
 import api from '../api'
 
-//import GoogleMap from 'google-map-react';
+import GoogleMap from 'google-map-react';
 import { useState, useEffect } from 'react';
 import './AnalysisScreen.css';
 
-import { GoogleMap, LoadScript ,InfoWindow, Marker } from '@react-google-maps/api';
-
-const containerStyle = {
-  width: '650px',
-  height: '500px'
-};
-
-const center = {
-  lat: 45.4098944,
-  lng: -122.7587584
-};
 
 
-// function Marker({ text }) {
-// 	return (
-// 		<Tooltip title={text} placement="top">
-// 			<Icon className="text-red">place</Icon>
-// 		</Tooltip>
-// 	);
-// }
+
+function Marker({ text }) {
+	return (
+		<Tooltip title={text} placement="top">
+			<Icon className="text-red">place</Icon>
+		</Tooltip>
+	);
+}
 
 
 
@@ -168,7 +158,7 @@ export default function AnalysisScreen(){
     // TODO: get current location and send to server with specific state 
     // Use the data to dsiplay CDC recmmmendations 
     const getCovid19 = () => {
-        axios.get('https://data.cdc.gov/resource/r8kw-7aab.json')
+        axios.get('https://jhucoronavirus.azureedge.net/api/v1/testing/daily.json')
         .then(res => {
             console.log(res.data);
         })
@@ -290,42 +280,6 @@ export default function AnalysisScreen(){
         
     // }
 
-    const markers = [
-        {
-          id: 1,
-          name: "Tigard, Oregon",
-          position: { lat: 45.408900, lng: -122.767190 }
-        },
-        {
-          id: 2,
-          name: "Tigard, Oregon",
-          position: { lat: 45.409080, lng: -122.767770 }
-        },
-        {
-          id: 3,
-          name: "Tigard, Oregon",
-          position: { lat: 45.4098944, lng: -122.7587584}
-        },
-        {
-          id: 4,
-          name: "New York, New York",
-          position: { lat: 40.712776, lng: -74.005974 }
-        }
-      ];
-        const [activeMarker, setActiveMarker] = useState(null);
-
-  const handleActiveMarker = (marker) => {
-    if (marker === activeMarker) {
-      return;
-    }
-    setActiveMarker(marker);
-  };
-
-  const handleOnLoad = (map) => {
-    const bounds = new window.google.maps.LatLngBounds();
-    markers.forEach(({ position }) => bounds.extend(position));
-    map.fitBounds(bounds);
-  };
 
     return (
         <Grid container className={classes.mainContainer}>
@@ -338,9 +292,7 @@ export default function AnalysisScreen(){
             </Typography>
             <Button onClick={getLocation}>Safe Location</Button>
             <Button >Exposure Range</Button>
-            <Button onClick={getCovid19} >CDC Infection Rate 744,616
-Current 7-Day Average                                                                                                                
-            </Button>
+            <Button onClick={getCovid19} >CDC Infection Rate</Button>
             <Button >Process Status Detail</Button>
             <Button >Overall Risk Factor</Button>
             <Button onClick={quarantine}>Recommendation</Button>
@@ -359,33 +311,8 @@ Current 7-Day Average
 			<Typography className="h2 mb-16">User Location</Typography>
 			<div className="w-full h-512">
 			
-            <LoadScript
-      googleMapsApiKey="AIzaSyCfgxa5C2aEKmAXuTCbDFnTU_W2Kb7QK0w"
-    >
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={center}
-        zoom={16}
-        onLoad={handleOnLoad}
-        onClick={() => setActiveMarker(null)}
-        mapContainerStyle={{ width: "100vw", height: "100vh" }}
-      >
-                 {markers.map(({ id, name, position }) => (
-        <Marker
-          key={id}
-          position={position}
-          onClick={() => handleActiveMarker(id)}
-        >
-          {activeMarker === id ? (
-            <InfoWindow onCloseClick={() => setActiveMarker(null)}>
-              <div>{name}</div>
-            </InfoWindow>
-          ) : null}
-        </Marker>
-      ))}
-        <></>
-      </GoogleMap>
-    </LoadScript>
+            
+                
 			</div>
             <Typography variant='body1' paragraph>
                Prevention Notification distance
